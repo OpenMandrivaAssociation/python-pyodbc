@@ -1,50 +1,45 @@
-%define _empty_manifest_terminate_build 0
+#define _empty_manifest_terminate_build 0
 
-%global modulename pyodbc
+%global module pyodbc
 
-Name:           pyodbc
-Version:        4.0.32
-Release:        1
-Summary:        Python DB API 2.0 Module for ODBC
-License:        MIT
-URL:            https://github.com/mkleehammer/pyodbc
-Source0:        https://github.com/mkleehammer/pyodbc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Name:		python-%{module}
+Version:	4.0.32
+Release:	1
+Summary:	Python DB API 2.0 Module for ODBC
+License:	MIT
+URL:		https://github.com/mkleehammer/pyodbc
+Source0:	https://github.com/mkleehammer/pyodbc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # (upstream)
 Patch0:			Upgrade_deprecated_unicode_encoding_calls.patch
-BuildRequires:  gcc-c++
-BuildRequires:  unixODBC-devel
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:	pkgconfig(odbc)
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python3dist(setuptools)
 
-%global _description\
+%{?python_provide:%python_provide python3-%{module}}
+Recommends: (mariadb-connector-odbc if mariadb-server)
+Recommends: (postgresql-odbc if postgresql-server)
+
+%description
 A Python DB API 2 and 3 module for ODBC. This project provides an up-to-date,\
 convenient interface to ODBC using native data types like datetime and\
 decimal.
 
-%description %_description
-
-%package -n python-%{modulename}
-Summary:        Python DB API 2.0 Module for ODBC
-%{?python_provide:%python_provide python3-%{modulename}}
-Recommends: (mariadb-connector-odbc if mariadb-server)
-Recommends: (postgresql-odbc if postgresql-server)
-
-%description -n python-%{modulename}
-A Python DB API 2 and 3 module for ODBC. This project provides an up-to-date,
-convenient interface to ODBC using native data types like datetime and
-decimal.
-
-
-%prep
-%setup -q
-
-%build
-%py3_build
-
-%install
-%py3_install
-
-%files -n python-%{name}
+%files
 %license LICENSE.txt
 %doc README.md notes.txt
 %{python3_sitearch}/*
+
+#---------------------------------------------------------------------------
+
+%prep
+%autosetup -p1 -n %{module}-%{version}
+
+%build
+%py_build
+
+%install
+%py_install
+
+# fix path
+mv %{buildroot}%{_prefix}/%{module}.pyi %{buildroot}%{python3_sitearch}
+
