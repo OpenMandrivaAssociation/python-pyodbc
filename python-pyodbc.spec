@@ -1,5 +1,3 @@
-#define _empty_manifest_terminate_build 0
-
 %global module pyodbc
 
 Name:		python-%{module}
@@ -43,5 +41,5 @@ decimal.
 %py_install
 
 # fix path
-mv %{buildroot}%{_prefix}/%{module}.pyi %{buildroot}%{python3_sitearch}
+mv %{buildroot}%{_prefix}/%{module}.pyi %{buildroot}%{py_platsitedir}
 
