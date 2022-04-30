@@ -4,7 +4,7 @@
 
 Name:		python-%{module}
 Version:	4.0.32
-Release:	1
+Release:	2
 Summary:	Python DB API 2.0 Module for ODBC
 License:	MIT
 URL:		https://github.com/mkleehammer/pyodbc
@@ -27,7 +27,9 @@ decimal.
 %files
 %license LICENSE.txt
 %doc README.md notes.txt
-%{python3_sitearch}/*
+%{py_platsitedir}/%{module}.pyi
+%{py_platsitedir}/%{module}*.so
+%{py_platsitedir}/%{module}-*-py%{python_version}.egg-info
 
 #---------------------------------------------------------------------------
 
