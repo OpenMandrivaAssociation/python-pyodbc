@@ -3,7 +3,7 @@
 %global modulename pyodbc
 
 Name:           pyodbc
-Version:        4.0.30
+Version:        4.0.32
 Release:        1
 Summary:        Python DB API 2.0 Module for ODBC
 License:        MIT
