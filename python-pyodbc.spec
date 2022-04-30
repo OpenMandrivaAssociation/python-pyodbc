@@ -9,6 +9,8 @@ Summary:        Python DB API 2.0 Module for ODBC
 License:        MIT
 URL:            https://github.com/mkleehammer/pyodbc
 Source0:        https://github.com/mkleehammer/pyodbc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# (upstream)
+Patch0:			Upgrade_deprecated_unicode_encoding_calls.patch
 BuildRequires:  gcc-c++
 BuildRequires:  unixODBC-devel
 BuildRequires:  python3-devel
