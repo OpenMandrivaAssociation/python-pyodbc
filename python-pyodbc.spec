@@ -6,8 +6,6 @@ License:	MIT
 URL:		https://github.com/mkleehammer/pyodbc
 #Source0:	https://github.com/mkleehammer/pyodbc/archive/%{version}.tar.gz/pyodbc-%{version}.tar.gz
 Source0:	https://pypi.io/packages/source/p/pyodbc/pyodbc-%{version}.tar.gz
-# (upstream)
-Patch0:			Upgrade_deprecated_unicode_encoding_calls.patch
 BuildRequires:	pkgconfig(odbc)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python3dist(setuptools)
