@@ -7,10 +7,11 @@ URL:		https://github.com/mkleehammer/pyodbc
 #Source0:	https://github.com/mkleehammer/pyodbc/archive/%{version}.tar.gz/pyodbc-%{version}.tar.gz
 Source0:	https://pypi.io/packages/source/p/pyodbc/pyodbc-%{version}.tar.gz
 BuildRequires:	pkgconfig(odbc)
-BuildRequires:	pkgconfig(python3)
-BuildRequires:	python3dist(setuptools)
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(wheel)
 
-%{?python_provide:%python_provide python3-pyodbc}
 Recommends: (mariadb-connector-odbc if mariadb-server)
 Recommends: (postgresql-odbc if postgresql-server)
 
@@ -24,7 +25,7 @@ decimal.
 %doc README.md notes.txt
 %{py_platsitedir}/pyodbc.pyi
 %{py_platsitedir}/pyodbc*.so
-%{py_platsitedir}/pyodbc*-info
+%{py_platsitedir}/pyodbc-*.*-info
 
 #---------------------------------------------------------------------------
 
