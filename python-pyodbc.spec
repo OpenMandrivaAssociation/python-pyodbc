@@ -22,7 +22,7 @@ decimal.
 
 %files
 %license LICENSE.txt
-%doc README.md notes.txt
+%doc README.md
 %{py_platsitedir}/pyodbc.pyi
 %{py_platsitedir}/pyodbc*.so
 %{py_platsitedir}/pyodbc-*.*-info
