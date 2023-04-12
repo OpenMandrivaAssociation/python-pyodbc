@@ -38,6 +38,3 @@ decimal.
 %install
 %py_install
 
-# fix path
-mv %{buildroot}%{_prefix}/pyodbc.pyi %{buildroot}%{py_platsitedir}
-
