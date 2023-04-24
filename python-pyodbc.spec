@@ -1,5 +1,5 @@
 Name:		python-pyodbc
-Version:	4.0.38
+Version:	4.0.39
 Release:	1
 Summary:	Python DB API 2.0 Module for ODBC
 License:	MIT
